@@ -1,2 +1,12 @@
-include ':lib'
-rootProject.name = "AndroidNativeLibrary"
+pluginManagement {
+    repositories {
+        maven {
+            name = 'GithubPackages'
+            url = uri('https://maven.pkg.github.com/jarnoharno/packages')
+        }
+        gradlePluginPortal()
+    }
+}
+
+include ':android-native-lib'
+

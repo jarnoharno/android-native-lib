@@ -1,4 +1,15 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+    id 'com.jarnoharno.github-packages' version '1.1.1'
+}
+
+group = 'com.jarnoharno'
+version = '1.0.0'
+
+githubPackages {
+    repository = 'jarnoharno/packages'
+}
 
 android {
     compileSdkVersion 29
@@ -36,7 +47,20 @@ android {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+            }
+        }
+        repositories {
+            maven githubPackages()
+        }
+    }
 }
