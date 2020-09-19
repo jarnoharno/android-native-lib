@@ -1,8 +1,11 @@
 pluginManagement {
     repositories {
         maven {
-            name = 'GithubPackages'
-            url = uri('https://maven.pkg.github.com/jarnoharno/packages')
+            url = uri('https://maven.pkg.github.com/jarnoharno/*')
+            credentials {
+                username = System.getenv("GITHUB_ACTOR") ?: getProperty('gpr.user')
+                password = System.getenv("GITHUB_TOKEN") ?: getProperty('gpr.key')
+            }
         }
         gradlePluginPortal()
     }

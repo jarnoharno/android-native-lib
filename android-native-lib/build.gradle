@@ -1,14 +1,14 @@
 plugins {
     id 'com.android.library'
     id 'maven-publish'
-    id 'com.jarnoharno.github-packages' version '1.1.1'
+    id 'com.jarnoharno.github-packages' version '1.1.2'
 }
 
 group = 'com.jarnoharno'
 version = '1.0.0'
 
 githubPackages {
-    repository = 'jarnoharno/packages'
+    repository = 'jarnoharno/android-native-lib'
 }
 
 android {
@@ -20,6 +20,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        ndkVersion '21.3.6528147'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"

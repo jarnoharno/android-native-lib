@@ -1,0 +1,11 @@
+name: test
+on:
+  push:
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: gradle test
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
